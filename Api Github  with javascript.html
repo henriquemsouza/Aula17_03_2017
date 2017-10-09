@@ -1,0 +1,47 @@
+<html>
+<head>
+</head>
+
+
+<body>
+
+<button onclick="pegarCep()">GET</button>
+
+<div id="divCep">
+</div>
+
+<script>
+
+
+try{	xmlhttp = new XMLHttpRequest();}
+catch(ee){
+try{	xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");	}
+catch(e){
+try{xmlhttp = new ActiveXObject("Microsoft.XMLHTTP")}
+catch(E){xmlhttp = false}
+}
+}
+
+var localrest = "https://api.github.com/users/";
+var globalcep = "henrique";
+
+function pegarCep(){
+xmlhttp.open("GET", localrest + globalcep ,true);
+xmlhttp.onreadystatechange=function() {
+if (xmlhttp.readyState==4){
+var resposta = xmlhttp.responseText;
+document.getElementById("divCep").innerHTML = resposta+"<br>";
+}else{
+console.log("Tem algo errado")
+}
+}
+xmlhttp.send(null);
+}
+  //
+
+</script>
+
+
+</body>
+
+</html>
